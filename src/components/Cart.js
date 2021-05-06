@@ -13,19 +13,18 @@ export default function Cart() {
         return acc += value.price * value.quantity
     }
 
-    console.log(cartItems);
     return (
         <div className="cart">
             {cartItems.length === 0
                 ? <>
                     <h1 className="text-align-center">Cart is Empty</h1>
-                    <img src={cart_empty} className="img-fluid" />
+                    <img src={cart_empty} className="img-fluid" alt="empty cart" />
                 </>
                 : <div>
                     <div className="cards-container">
                         {cartItems.map(item => {
                             return <div key={item.id} className="card">
-                                <img src={item.minion} />
+                                <img src={item.minion} alt="" />
                                 <div className="card-body">
                                     <h1>{item.name}</h1>
                                     <p>Rs.{item.price}</p>

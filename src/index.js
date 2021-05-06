@@ -5,7 +5,6 @@ import App from './App';
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { CartProvider } from "./context/cart-context";
-import Cart from './components/Cart';
 
 ReactDOM.render(
   <React.StrictMode>

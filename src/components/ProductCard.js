@@ -9,7 +9,7 @@ export default function ProductCard(props) {
 
     return (
         <div className="card" key={id}>
-            <img src={minion} />
+            <img src={minion} alt="" />
             <div className="card-body">
                 <h3 className="card-title">{name}</h3>
                 <p className="card-text">Rs.{price}</p>
@@ -19,7 +19,7 @@ export default function ProductCard(props) {
                             className="btn btn-primary"
                             onClick={() => dispatch({ type: "ADD_TO_CART", payload: { id, minion, name, price, quantity: 1 } })}
                         > Add to Cart </button>
-                        : <Link to="/cart" class="btn btn-primary">Go to Cart</Link>
+                        : <Link to="/cart" className="btn btn-primary">Go to Cart</Link>
                 }
                 <button
                     className="btn btn-secondary"

@@ -31,10 +31,10 @@ export default function ProductListing() {
                     </label>
                 </fieldset>
             </div>
-            <div className="product-cards">
+            <div className="product-cards" >
                 {ProductsDB.map(item => {
                     return (
-                        <ProductCard item={item} />
+                        <ProductCard key={item.id} item={item} />
                     );
                 })}
             </div>
