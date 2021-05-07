@@ -17,16 +17,18 @@ export default function Cart() {
         <div className="cart">
             {cartItems.length === 0
                 ? <>
-                    <h1 className="text-align-center">Cart is Empty</h1>
+                    <h2 className="text-align-center">Cart is Empty!!!</h2>
                     <img src={cart_empty} className="img-fluid" alt="empty cart" />
                 </>
-                : <div>
+                : <div className="cart-container">
                     <div className="cards-container">
                         {cartItems.map(item => {
                             return <div key={item.id} className="card">
-                                <img src={item.minion} alt="" />
+                                <img className="card-img" src={item.url} alt={item.name} />
                                 <div className="card-body">
-                                    <h1>{item.name}</h1>
+                                    <h2 className="card-title">{item.name}</h2>
+                                    <p className="card-text">by {item.author}</p>
+                                    <p className="card-text">---{item.category}</p>
                                     <p>Rs.{item.price}</p>
                                     <p>Qty: {item.quantity}</p>
                                     <button className="btn btn-primary" onClick={() => dispatch({ type: "INCREMENT_ITEMS", payload: item })}> + </button>
@@ -36,10 +38,10 @@ export default function Cart() {
                             </div>
                         })}
                     </div>
-                    <div>
-                        <h1>Cart Total:</h1>
+                    <div className="total-price-container">
+                        <h2>Cart Total:</h2>
                         <p>No. of Items: {cartItems.reduce(totalItems, 0)}</p>
-                        <p>Total Price: {cartItems.reduce(totalPrice, 0)}</p>
+                        <p>Total Price: Rs.{cartItems.reduce(totalPrice, 0)}</p>
                     </div>
                 </div>}
         </div >
