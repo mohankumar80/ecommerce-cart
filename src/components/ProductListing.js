@@ -34,7 +34,7 @@ export default function ProductListing() {
 
     function getFilteredData(productList, { showFastDelivery, showAllInventory }) {
 
-        return productList.filter(productItem => showFastDelivery ? productItem.fastDelivery : true).filter(productItem => showAllInventory ? !productItem.inStock : true)
+        return productList.filter(productItem => showFastDelivery ? productItem.fastDelivery : true).filter(productItem => showAllInventory ? productItem : productItem.inStock)
 
     }
 
@@ -63,7 +63,7 @@ export default function ProductListing() {
                     </label>
                     <label>
                         <input type="checkbox" onChange={() => dispatch({ type: "TOOGLE_INVENTORY" })} />
-                        Out of Stock
+                        Include Out of Stock
                     </label>
                 </fieldset>
             </div>
