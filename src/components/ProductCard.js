@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function ProductCard(props) {
 
     const { state: { cartItems }, dispatch } = useCart();
-    const { item: { id, url, name, author, category, price } } = props;
+    const { item: { id, url, name, author, category, price, inStock } } = props;
 
     return (
         <div className="card" key={id}>
@@ -17,6 +17,8 @@ export default function ProductCard(props) {
                 {
                     cartItems.findIndex(item => item.id === id) === -1
                         ? <button
+                            disabled={inStock ? false : true}
+                            style={inStock ? null : { cursor: "not-allowed" }}
                             className="btn btn-primary"
                             onClick={() => dispatch({ type: "ADD_TO_CART", payload: { id, url, name, author, category, price, quantity: 1 } })}
                         > Add to Cart </button>

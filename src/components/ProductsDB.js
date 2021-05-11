@@ -6,6 +6,8 @@ export const ProductsDB = [
         author: "Robert Iger",
         category: "Autobiographies",
         price: 157,
+        fastDelivery: true,
+        inStock: true
     },
     {
         id: 2,
@@ -14,6 +16,8 @@ export const ProductsDB = [
         author: "David Goggins",
         category: "Audiobook",
         price: 836,
+        fastDelivery: false,
+        inStock: true
     },
     {
         id: 3,
@@ -21,7 +25,9 @@ export const ProductsDB = [
         name: "The Autobiography of Benjamin Franklin",
         author: "Benjamin Franklin",
         category: "Autobiographies",
-        price: 207
+        price: 207,
+        fastDelivery: true,
+        inStock: false
     },
     {
         id: 4,
@@ -30,6 +36,8 @@ export const ProductsDB = [
         author: "Mahatma Gandhi",
         category: "Autobiographies",
         price: 99,
+        fastDelivery: true,
+        inStock: false,
     },
     {
         id: 5,
@@ -38,6 +46,8 @@ export const ProductsDB = [
         author: "Ashlee Vance",
         category: "Autobiographies",
         price: 584,
+        fastDelivery: true,
+        inStock: true,
     },
     {
         id: 6,
@@ -46,22 +56,28 @@ export const ProductsDB = [
         author: "Walter Isaacson",
         category: "Biography",
         price: 375,
+        fastDelivery: false,
+        inStock: true,
     },
     {
         id: 7,
         url: "https://m.media-amazon.com/images/I/51N0TVAaaIL.jpg",
         name: "How I Braved Anu Aunty & Co-Founded A Million Dollar Company",
         author: "Varun Agarwal",
-        category: "Biography",
+        category: "Autobiographies",
         price: 130,
+        fastDelivery: true,
+        inStock: true,
     },
     {
         id: 8,
         url: "https://images-na.ssl-images-amazon.com/images/I/51wbVQTpTgL._SX339_BO1,204,203,200_.jpg",
         name: "Wings of Fire: An Autobiography of Abdul Kalam",
         author: "A. P. J. Abdul Kalam",
-        category: "AutoBiographies",
+        category: "Autobiographies",
         price: 261,
+        fastDelivery: true,
+        inStock: true,
     },
     {
         id: 9,
@@ -70,6 +86,8 @@ export const ProductsDB = [
         author: "Walter Isaacson",
         category: "Biography",
         price: 999,
+        fastDelivery: false,
+        inStock: true,
     },
     {
         id: 10,
@@ -78,6 +96,8 @@ export const ProductsDB = [
         author: "Barack Obama",
         category: "Audiobook",
         price: 1708,
+        fastDelivery: true,
+        inStock: false,
     },
     {
         id: 11,
@@ -86,6 +106,8 @@ export const ProductsDB = [
         author: "Paramahansa Yogananda",
         category: "Audiobook",
         price: 1126,
+        fastDelivery: false,
+        inStock: true,
     },
     {
         id: 12,
@@ -94,6 +116,8 @@ export const ProductsDB = [
         author: "Richard P Feynman",
         category: "Autobiographies",
         price: 381,
+        fastDelivery: true,
+        inStock: false,
     },
     {
         id: 13,
@@ -102,6 +126,8 @@ export const ProductsDB = [
         author: "A. P. J. Abdul Kalam",
         category: "Autobiographies",
         price: 158,
+        fastDelivery: true,
+        inStock: true,
     },
     {
         id: 14,
@@ -110,5 +136,7 @@ export const ProductsDB = [
         author: "Sudha Murty",
         category: "Autobiographies",
         price: 158,
+        fastDelivery: true,
+        inStock: true,
     }
 ]
