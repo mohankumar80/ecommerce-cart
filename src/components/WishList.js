@@ -16,7 +16,7 @@ export default function WishList() {
                     : <>
                         {wishList.map(wishItem => {
                             return (<div key={wishItem.id} className="card">
-                                <img src={wishItem.url} alt={wishItem.name} />
+                                <img src={wishItem.url} alt={wishItem.name} className="card-img" />
                                 <button className="btn btn-icon card-dismiss" onClick={() => dispatch({ type: "REMOVE_FROM_WISHLIST", payload: wishItem })}>&times;</button>
                                 <div className="card-body">
                                     <h1 className="card-title">{wishItem.name}</h1>

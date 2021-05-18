@@ -7,8 +7,9 @@ export default function ProductCard(props) {
     const { item: { id, url, name, author, category, price, inStock } } = props;
 
     return (
-        <div className="card" key={id}>
-            <img src={url} alt={name} />
+        <div className="card" key={id} style={inStock ? { cursor: "pointer" } : { backgroundColor: "#CBD5E1", cursor: "not-allowed" }
+        }>
+            <img src={url} alt={name} className="card-img" />
             <div className="card-body">
                 <h3 className="card-title">{name}</h3>
                 <p className="card-text">by {author}</p>

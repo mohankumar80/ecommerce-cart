@@ -1,12 +1,8 @@
 import React from "react";
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
 
-import Home from "./components/Home";
-import ProductListing from "./components/ProductListing"
-import Cart from "./components/Cart";
-import WishList from "./components/WishList";
+import { Navigation, Home, ProductListing, Cart, WishList } from "./components/index";
 
 export default function App() {
   return (

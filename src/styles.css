@@ -77,6 +77,12 @@ body {
 .card {
     margin: 1rem;
     justify-content: space-between;
+    width: 16rem;
+}
+
+.card-img {
+    width: 16rem;
+    height: 16rem;
 }
 
 .card-text {
@@ -122,6 +128,9 @@ body {
     .products-container {
         display: grid;
         grid-template-areas: "filters" "cards";
+    }
+    .card {
+        margin: 0.5rem 2rem;
     }
     .cart-container {
         display: grid;

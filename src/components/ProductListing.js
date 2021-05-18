@@ -1,23 +1,11 @@
 import React, { useReducer } from 'react'
 import { ProductsDB } from "./ProductsDB";
 import ProductCard from "./ProductCard";
+import filterReducer from "../context/filter-reducer";
 
 import "../styles.css";
 
 export default function ProductListing() {
-
-    function filterReducer(state, action) {
-        switch (action.type) {
-            case "SORTBY":
-                return { ...state, sortBy: action.payload }
-            case "TOOGLE_DELIVERY":
-                return { ...state, showFastDelivery: !state.showFastDelivery }
-            case "TOOGLE_INVENTORY":
-                return { ...state, showAllInventory: !state.showAllInventory }
-            default:
-                return state;
-        }
-    }
 
     const [{ sortBy, showFastDelivery, showAllInventory }, dispatch] = useReducer(filterReducer, { sortBy: null, showFastDelivery: false, showAllInventory: false })
 
