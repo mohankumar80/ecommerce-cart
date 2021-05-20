@@ -18,6 +18,18 @@ body {
     width: auto;
 }
 
+.nav>a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.nav-item>a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
 .badge-hover {
     background-color: var(--black);
     color: var(--white);

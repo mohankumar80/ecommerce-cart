@@ -16,7 +16,9 @@ export default function Navigation() {
             <div className="nav">
                 <NavLink activeClassName="navbar-brand" end to="/">One1</NavLink>
                 <ul className="navbar-nav">
-                    <li className="nav-item"><NavLink activeClassName="nav-link" to="/products">Products</NavLink></li>
+                    <li className="nav-item">
+                        <NavLink activeClassName="nav-link" to="/products">Products</NavLink>
+                    </li>
                     <li className="nav-item">
                         <NavLink activeClassName="nav-link" className="badge-icon" to="/cart">
                             <HiShoppingCart />

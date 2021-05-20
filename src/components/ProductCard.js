@@ -27,7 +27,7 @@ export default function ProductCard(props) {
                 }
                 <button
                     className="btn btn-secondary"
-                    onClick={() => dispatch({ type: "ADD_TO_WISHLIST", payload: { id, url, name, author, category, price, quantity: 1 } })}
+                    onClick={() => dispatch({ type: "ADD_TO_WISHLIST", payload: { id, url, name, author, category, price, quantity: 1, inStock } })}
                 >Add to Wishlist</button>
             </div>
         </div >

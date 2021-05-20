@@ -22,7 +22,11 @@ export default function WishList() {
                                     <h1 className="card-title">{wishItem.name}</h1>
                                     <p className="card-text">by {wishItem.author}</p>
                                     <p className="card-text">---{wishItem.category}</p>
-                                    <button className="btn btn-primary" onClick={() => dispatch({ type: "MOVE_TO_CART", payload: wishItem })}>Move to Cart</button>
+                                    {
+                                        wishItem.inStock
+                                        ? <button className="btn btn-primary" onClick={() => dispatch({ type: "MOVE_TO_CART", payload: wishItem })}>Move to Cart</button>
+                                        : null
+                                    }
                                 </div>
                             </div>
                             )
