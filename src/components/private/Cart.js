@@ -1,6 +1,6 @@
 import React from 'react';
-import cart_empty from "../assests/cart_empty.png";
-import { useCart } from "../context/cart-context";
+import cart_empty from "../../assests/cart_empty.png";
+import { useCart } from "../../context/cart-context/cart-context"
 
 export default function Cart() {
     const { state: { cartItems }, dispatch } = useCart();

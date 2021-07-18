@@ -1,4 +1,4 @@
-import { useCart } from '../context/cart-context';
+import { useCart } from '../context/cart-context/cart-context';
 import { Link } from "react-router-dom";
 
 export default function ProductCard(props) {

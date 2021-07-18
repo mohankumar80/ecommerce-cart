@@ -1,6 +1,6 @@
 import React from 'react'
-import wishlist_empty from "../assests/wishlist_empty.png"
-import { useCart } from "../context/cart-context";
+import wishlist_empty from "../../assests/wishlist_empty.png"
+import { useCart } from "../../context/cart-context/cart-context";
 
 export default function WishList() {
     const { state: { wishList }, dispatch } = useCart();

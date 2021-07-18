@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import cartReducer from "./reducer";
+import cartReducer from "./cartReducer";
 
 export const CartContext = createContext();
 
@@ -9,7 +9,7 @@ export function useCart() {
 
 const initialState = {
     cartItems: [],
-    wishList: []
+    wishList: [],
 }
 
 
