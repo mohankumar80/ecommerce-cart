@@ -1,0 +1,212 @@
+@import url("https://one-ui.netlify.app/styles/one.css");
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --light-gray: #6B7280;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* NavBar Component */
+
+.nav {
+    padding: 2rem;
+    width: auto;
+}
+
+.nav>a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.nav-item>a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.badge-hover {
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+
+/* Home Component */
+
+.home-container {
+    position: relative;
+}
+
+.home-overlay-container {
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+}
+
+
+/* Products Listing Page */
+
+.products-container {
+    display: grid;
+    grid-template-areas: "filters cards cards cards cards";
+}
+
+.product-filters {
+    grid-area: "filters";
+    position: sticky;
+    top: 0rem;
+}
+
+.product-cards {
+    grid-area: "cards";
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* Cart Component */
+
+.cart-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.card {
+    margin: 1rem;
+    justify-content: space-between;
+    width: 16rem;
+}
+
+.card-img {
+    width: 16rem;
+    height: 16rem;
+}
+
+.card-text {
+    color: var(--light-gray)
+}
+
+.total-price-container {
+    position: fixed;
+    right: 25%;
+    border: 2px solid var(--black);
+    border-radius: 0.5rem;
+    padding: 4rem;
+    margin: 0.5rem 0;
+}
+
+
+/* WishList Component */
+
+.wishlist-container {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn-clear-wishlist {
+    position: fixed;
+    top: 90%;
+    left: 48%;
+    border-radius: 5rem;
+    box-shadow: 5px 5px 20px #808080;
+}
+
+@media only screen and (max-width: 480px) {
+    .img-home {
+        width: 100vw;
+        height: 100vh;
+    }
+    .home-overlay-container {
+        color: var(--white);
+        position: absolute;
+        left: 1rem;
+    }
+    .products-container {
+        display: grid;
+        grid-template-areas: "filters" "cards";
+    }
+    .card {
+        margin: 0.5rem 2rem;
+    }
+    .cart-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .total-price-container {
+        position: static;
+        margin: auto;
+    }
+    .btn-clear-wishlist {
+        position: fixed;
+        top: 90%;
+        left: 30%;
+    }
+}
+
+
+/* Login  */
+
+.Login {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 18rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 0.5rem;
+}
+
+.login-sub-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid var(--light-gray);
+    padding: 1rem 0;
+}
+
+.btn-login {
+    width: 6rem;
+    margin-top: 1rem;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    height: 4rem;
+}
+
+.btn-signup {
+    display: block;
+    margin: 1rem 0;
+    width: 5rem;
+}
+
+.search-container {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.input.input-styled {
+    width: 96%;
+}
