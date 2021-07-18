@@ -27,11 +27,9 @@ export default function ProductListing() {
 
     function getSearchedData(productsData, showSearchedItems) {
         if(showSearchedItems) {
-            return productsData.map(item => {
-                if(item.name.toLowerCase().includes(showSearchedItems.toLowerCase())) {
-                    return item
-                }
-            }).filter(item => item !== undefined)
+            return productsData.map(item => 
+                item.name.toLowerCase().includes(showSearchedItems.toLowerCase()) ? item : undefined
+            ).filter(item => item !== undefined)
         } return productsData;
     }
 

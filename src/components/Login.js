@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from "../context/auth-context/useAuth"
 
 export default function Login() {
@@ -12,7 +12,7 @@ export default function Login() {
     useEffect(() => {
         const userLogin = JSON.parse(localStorage?.getItem("login"))
         userLogin?.isUserLoggedIn && setuserLoggedIn(true)
-    }, [])
+    }, [setuserLoggedIn])
 
     const loginHandler = async(e) => {
         e.preventDefault()
