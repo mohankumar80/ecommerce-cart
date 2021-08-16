@@ -1,12 +1,12 @@
 import React, { useReducer } from 'react'
-import { ProductsDB } from "./ProductsDB";
 import ProductCard from "./ProductCard";
 import filterReducer from "../context/filter-reducer";
 import Filters from "./Filters"
 
 import "../styles.css";
 
-export default function ProductListing() {
+export default function ProductListing({ products }) {
+
 
     const [{ sortBy, showFastDelivery, showAllInventory, showSearchedItems, maxRange }, dispatch] = useReducer(filterReducer, { sortBy: null, showFastDelivery: false, showAllInventory: false, showSearchedItems: null, maxRange: 1200 })
 
@@ -37,7 +37,7 @@ export default function ProductListing() {
         return productsData.filter(item => item.price <= Number(range))
     }
 
-    const sortedData = getSortedData(ProductsDB, sortBy);
+    const sortedData = getSortedData(products, sortBy);
     const filteredData = getFilteredData(sortedData, { showFastDelivery, showAllInventory })
     const rangeData = getRangeData(filteredData, maxRange )
     const searchedData = getSearchedData(rangeData, showSearchedItems )
@@ -59,7 +59,7 @@ export default function ProductListing() {
                 <div className="product-cards" >
                     {searchedData.map(item => {
                         return (
-                            <ProductCard key={item.id} item={item} />
+                            <ProductCard key={item._id} item={item} />
                         );
                     })}
                 </div>
