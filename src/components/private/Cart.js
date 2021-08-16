@@ -1,9 +1,13 @@
+import axios from 'axios';
 import React from 'react';
 import cart_empty from "../../assests/cart_empty.png";
+import useAuth from '../../context/auth-context/useAuth';
 import { useCart } from "../../context/cart-context/cart-context"
 
 export default function Cart() {
     const { state: { cartItems }, dispatch } = useCart();
+    const { userLoggedIn, userDetails } = useAuth();
+    const userId = userDetails?._id;
 
     const totalItems = (acc, value) => {
         return acc += value.quantity;
@@ -11,6 +15,46 @@ export default function Cart() {
 
     const totalPrice = (acc, value) => {
         return acc += value.price * value.quantity
+    }
+
+    const removeFromCart = async (cartItem) => {
+        try {
+            const response = await axios.delete(`https://ecommerce-backend.purammohanmohan.repl.co/user/cart/${cartItem._id}`, {
+                data: {
+                    userId
+                }
+            })
+            if(response.data.success) {
+                dispatch({ type: "REMOVE_FROM_CART", payload: cartItem })
+            }
+        } catch (error) {
+            console.log("failed to remove from cart", error)
+        }
+    }
+
+    const incrementItemQuantity = async (cartItem) => {
+        try {
+            const response = await axios.put(`https://ecommerce-backend.purammohanmohan.repl.co/user/cart/${cartItem._id}/${cartItem.quantity}`, {
+                "userId": userId
+            })
+            if(response.data.success) {
+                dispatch({ type: "INCREMENT_ITEMS", payload: cartItem })            }
+        } catch (error) {
+            console.log("failed to increase the product quantity from cart", error)
+        }
+    }
+
+    const decrementItemQuantity = async (cartItem) => {
+        try {
+            const response = await axios.patch(`https://ecommerce-backend.purammohanmohan.repl.co/user/cart/${cartItem._id}/${cartItem.quantity}`, {
+                "userId": userId
+            })
+            if(response.data.success) {
+                dispatch({ type: "DECREMENT_ITEMS", payload: cartItem })
+            }
+        } catch (error) {
+            console.log("failed to decrease the product quantity from cart", error)
+        }
     }
 
     return (
@@ -23,7 +67,7 @@ export default function Cart() {
                 : <div className="cart-container">
                     <div className="cards-container">
                         {cartItems.map(item => {
-                            return <div key={item.id} className="card">
+                            return <div key={item._id} className="card">
                                 <img className="card-img" src={item.url} alt={item.name} />
                                 <div className="card-body">
                                     <h2 className="card-title">{item.name}</h2>
@@ -31,9 +75,27 @@ export default function Cart() {
                                     <p className="card-text">---{item.category}</p>
                                     <p>Rs.{item.price}</p>
                                     <p>Qty: {item.quantity}</p>
-                                    <button className="btn btn-primary" onClick={() => dispatch({ type: "INCREMENT_ITEMS", payload: item })}> + </button>
-                                    <button className="btn btn-secondary" onClick={() => dispatch({ type: "DECREMENT_ITEMS", payload: item })}> - </button>
-                                    <button className="btn btn-primary" onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: item })}> remove </button>
+                                    <button className="btn btn-primary" onClick={
+                                        () => {
+                                            if(userLoggedIn) {
+                                                incrementItemQuantity(item)
+                                            }
+                                        }
+                                    }> + </button>
+                                    <button className="btn btn-secondary" onClick={
+                                        () => {
+                                            if(userLoggedIn) {
+                                                decrementItemQuantity(item)
+                                            }
+                                        }
+                                    }> - </button>
+                                    <button className="btn btn-primary" onClick={
+                                        () => {
+                                            if(userLoggedIn) {
+                                                removeFromCart(item)
+                                            }
+                                        }
+                                    }> remove </button>
                                 </div>
                             </div>
                         })}

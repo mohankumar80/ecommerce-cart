@@ -1,9 +1,10 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import useAuth from "../context/auth-context/useAuth"
 
 export default function Login() {
-    const { setuserLoggedIn, loginUserWithCredentials } = useAuth();
+    const { setuserLoggedIn, setuserDetails } = useAuth();
     const [ formDetails, setformDetails ] = useState({ username: "", password: "" })
 
     const { state } = useLocation()
@@ -11,16 +12,26 @@ export default function Login() {
 
     useEffect(() => {
         const userLogin = JSON.parse(localStorage?.getItem("login"))
+        const user = JSON.parse(localStorage?.getItem("details"));
         userLogin?.isUserLoggedIn && setuserLoggedIn(true)
-    }, [setuserLoggedIn])
+        user && setuserDetails(user)
+        if(userLogin) {
+            navigate(state?.from ? state.from : "/login")
+        }
+    }, [setuserLoggedIn, navigate, state, setuserDetails])
 
     const loginHandler = async(e) => {
         e.preventDefault()
         const { username, password } = formDetails;
-        const response = await loginUserWithCredentials(username, password)
-        if(response && response.success) {
+        const response = await axios.post("https://ecommerce-backend.purammohanmohan.repl.co/user/login", {
+            "username": username,
+            "password": password
+        })
+        if(response && response.data.success) {
+            setuserDetails(response.data.user)
             setuserLoggedIn(true)
             localStorage?.setItem("login", JSON.stringify({isUserLoggedIn: true}))
+            localStorage?.setItem("details", JSON.stringify({_id: response.data.user._id}))
         }
         navigate(state?.from ? state.from : "login")
     }
@@ -34,7 +45,6 @@ export default function Login() {
 
     const passwordHandler = e => {
         const password = e.target.value;
-
         setformDetails(details => {
             return {...details, password}
         })
@@ -51,7 +61,7 @@ export default function Login() {
                     </button>
                 </form>
                 <div className="signup-container">
-                    <button className="btn btn-secondary btn-signup text-align-center">Sign Up</button>
+                    <Link to="/signup" className="btn btn-secondary btn-signup text-align-center" state={{ from: state?.from }}> Sign up </Link>
                 </div>
             </div>
         </div>

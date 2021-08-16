@@ -11,9 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>,
