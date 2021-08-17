@@ -22,7 +22,8 @@ export default function ProductListing({ products }) {
     }
 
     function getFilteredData(productList, { showFastDelivery, showAllInventory }) {
-        return productList.filter(productItem => showFastDelivery ? productItem.fastDelivery : true).filter(productItem => showAllInventory ? productItem : productItem.inStock)
+        return productList.filter(productItem => showFastDelivery ? productItem.fastDelivery : true)
+        .filter(productItem => showAllInventory ? productItem : productItem.inStock)
     }
 
     function getSearchedData(productsData, showSearchedItems) {

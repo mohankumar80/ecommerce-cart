@@ -27,7 +27,7 @@ export default function Signup() {
         event.preventDefault();
         const { username, password } = userDetails;
         try {
-            const response = await axios.post("https://ecommerce-backend--purammohanmohan.repl.co/user/signup", {
+            const response = await axios.post("https://ecommerce-cart-backend.herokuapp.com/user/signup", {
                     "username": username,
                     "password": password
             })

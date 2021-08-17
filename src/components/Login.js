@@ -23,7 +23,7 @@ export default function Login() {
     const loginHandler = async(e) => {
         e.preventDefault()
         const { username, password } = formDetails;
-        const response = await axios.post("https://ecommerce-backend.purammohanmohan.repl.co/user/login", {
+        const response = await axios.post("https://ecommerce-cart-backend.herokuapp.com/user/login", {
             "username": username,
             "password": password
         })

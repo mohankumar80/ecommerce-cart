@@ -14,7 +14,7 @@ export default function ProductCard(props) {
 
     const addToCart = async (_id, url, name, author, category, price, inStock, fastDelivery) => {
         try {
-            const response = await axios.post(`https://ecommerce-backend.purammohanmohan.repl.co/user/cart/${_id}`, {
+            const response = await axios.post(`https://ecommerce-cart-backend.herokuapp.com/user/cart/${_id}`, {
                 "userId": userId
             })
             if(response.data.success) {
@@ -27,7 +27,7 @@ export default function ProductCard(props) {
 
     const addToWishlist = async (_id, url, name, author, category, price, inStock, fastDelivery ) => {
         try {
-            const response = await axios.post(`https://ecommerce-backend.purammohanmohan.repl.co/user/wishlist/${_id}`, {
+            const response = await axios.post(`https://ecommerce-cart-backend.herokuapp.com/user/wishlist/${_id}`, {
                 "userId": userId
             }) 
             if(response.data.success) {

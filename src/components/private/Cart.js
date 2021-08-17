@@ -19,7 +19,7 @@ export default function Cart() {
 
     const removeFromCart = async (cartItem) => {
         try {
-            const response = await axios.delete(`https://ecommerce-backend.purammohanmohan.repl.co/user/cart/${cartItem._id}`, {
+            const response = await axios.delete(`https://ecommerce-cart-backend.herokuapp.com/user/cart/${cartItem._id}`, {
                 data: {
                     userId
                 }
@@ -34,7 +34,7 @@ export default function Cart() {
 
     const incrementItemQuantity = async (cartItem) => {
         try {
-            const response = await axios.put(`https://ecommerce-backend.purammohanmohan.repl.co/user/cart/${cartItem._id}/${cartItem.quantity}`, {
+            const response = await axios.put(`https://ecommerce-cart-backend.herokuapp.com/user/cart/${cartItem._id}/${cartItem.quantity}`, {
                 "userId": userId
             })
             if(response.data.success) {
@@ -46,7 +46,7 @@ export default function Cart() {
 
     const decrementItemQuantity = async (cartItem) => {
         try {
-            const response = await axios.patch(`https://ecommerce-backend.purammohanmohan.repl.co/user/cart/${cartItem._id}/${cartItem.quantity}`, {
+            const response = await axios.patch(`https://ecommerce-cart-backend.herokuapp.com/user/cart/${cartItem._id}/${cartItem.quantity}`, {
                 "userId": userId
             })
             if(response.data.success) {

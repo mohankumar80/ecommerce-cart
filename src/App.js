@@ -18,7 +18,7 @@ export default function App() {
   useEffect(() => {
     (async function() {
       try {
-        const response = await axios.get("https://ecommerce-backend.purammohanmohan.repl.co/products");
+        const response = await axios.get("https://ecommerce-cart-backend.herokuapp.com/products");
         setdata(response.data.products)
       } catch (error) {
         console.log("error while retrieving products", error)
@@ -31,7 +31,7 @@ export default function App() {
     if(userLoggedIn) {
       (async function() {
         try {
-          const response = await axios.get(`https://ecommerce-backend.purammohanmohan.repl.co/user/${userId}/cart`);
+          const response = await axios.get(`https://ecommerce-cart-backend.herokuapp.com/user/${userId}/cart`);
           const allCartItems = response.data.cart;
           allCartItems.map(cartItem => 
               dispatch({ type: "ADD_TO_CART", payload: cartItem })
@@ -47,7 +47,7 @@ export default function App() {
     if(userLoggedIn) {
       (async () => {
         try {
-          const response = await axios.get(`https://ecommerce-backend.purammohanmohan.repl.co/user/${userId}/wishlist`);
+          const response = await axios.get(`https://ecommerce-cart-backend.herokuapp.com/user/${userId}/wishlist`);
           const wishlistItems = response.data.wishlist;
           wishlistItems.map(wishItem => 
             dispatch({ type: 'ADD_TO_WISHLIST', payload: wishItem })

@@ -12,7 +12,7 @@ export default function WishList() {
 
     const removeFromWishlist = async (item) => {
         try {
-            const response = await axios.delete(`https://ecommerce-backend.purammohanmohan.repl.co/user/wishlist/${item._id}`, {
+            const response = await axios.delete(`https://ecommerce-cart-backend.herokuapp.com/user/wishlist/${item._id}`, {
                 data: {
                     "userId": userId
                 }
@@ -27,12 +27,12 @@ export default function WishList() {
 
     const moveToCart = async (wishlistItem) => {
         try {
-            await axios.delete(`https://ecommerce-backend.purammohanmohan.repl.co/user/wishlist/${wishlistItem._id}`, {
+            await axios.delete(`https://ecommerce-cart-backend.herokuapp.com/user/wishlist/${wishlistItem._id}`, {
                 data: {
                     "userId": userId
                 }
             })
-            const response = await axios.post(`https://ecommerce-backend.purammohanmohan.repl.co/user/cart/${wishlistItem._id}`, {
+            const response = await axios.post(`https://ecommerce-cart-backend.herokuapp.com/user/cart/${wishlistItem._id}`, {
                 userId
             })
             if(response.data.success) {
@@ -45,7 +45,7 @@ export default function WishList() {
 
     const clearWishlist = async () => {
         try {
-            const response = await axios.delete(`https://ecommerce-backend.purammohanmohan.repl.co/user/${userId}/wishlist`)
+            const response = await axios.delete(`https://ecommerce-cart-backend.herokuapp.com/user/${userId}/wishlist`)
             if(response.data.success) {
                 dispatch({ type: "CLEAR_WISHLIST" })
             }
