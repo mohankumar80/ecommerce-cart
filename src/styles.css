@@ -210,3 +210,7 @@ body {
 .input.input-styled {
     width: 96%;
 }
+
+.Toastify__toast-container--top-right {
+    margin-top: 4rem;
+}
