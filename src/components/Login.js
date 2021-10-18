@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useAuth from "../context/auth-context/useAuth"
 
 export default function Login() {
@@ -23,17 +24,23 @@ export default function Login() {
     const loginHandler = async(e) => {
         e.preventDefault()
         const { username, password } = formDetails;
-        const response = await axios.post("https://ecommerce-cart-backend.herokuapp.com/user/login", {
-            "username": username,
-            "password": password
-        })
-        if(response && response.data.success) {
-            setuserDetails(response.data.user)
-            setuserLoggedIn(true)
-            localStorage?.setItem("login", JSON.stringify({isUserLoggedIn: true}))
-            localStorage?.setItem("details", JSON.stringify({_id: response.data.user._id}))
+        try {   
+            const response = await axios.post("https://ecommerce-cart-backend.herokuapp.com/user/login", {
+                "username": username,
+                "password": password
+            })
+            if(response && response.data.success) {
+                setuserDetails(response.data.user)
+                setuserLoggedIn(true)
+                toast.success("Login Successfull")
+                localStorage?.setItem("login", JSON.stringify({isUserLoggedIn: true}))
+                localStorage?.setItem("details", JSON.stringify({_id: response.data.user._id}))
+            }
+            navigate(state?.from ? state.from : "login")   
+        } catch (error) {
+            console.log("failed to login")
+            toast.error("something went wrong!! Please check the credentials again")
         }
-        navigate(state?.from ? state.from : "login")
     }
 
     const usernameHandler = e => {

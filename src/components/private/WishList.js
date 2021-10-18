@@ -2,6 +2,7 @@ import React from 'react'
 import wishlist_empty from "../../assests/wishlist_empty.png"
 import { useCart } from "../../context/cart-context/cart-context";
 import  useAuth from "../../context/auth-context/useAuth";
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export default function WishList() {
@@ -19,8 +20,10 @@ export default function WishList() {
             })
             if(response.data.success) {
                 dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item })
+                toast.success("Removed from Wishlist")
             }
         } catch (error) {
+            toast.error("Failed to remove from Wishlist")
             console.log('failed to remove the item into wishlist', error)
         }
     }
@@ -37,8 +40,10 @@ export default function WishList() {
             })
             if(response.data.success) {
                 dispatch({ type: "MOVE_TO_CART", payload: wishlistItem })
+                toast.success("Moved to Cart");
             }
         }  catch (error) {
+            toast.error("Failed to Move to Cart");
             console.log('failed to move the item into cart', error)
         }
     }

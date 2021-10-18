@@ -1,6 +1,7 @@
 import { useCart } from '../context/cart-context/cart-context';
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../context/auth-context/useAuth';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export default function ProductCard(props) {
@@ -19,8 +20,10 @@ export default function ProductCard(props) {
             })
             if(response.data.success) {
                 dispatch({ type: "ADD_TO_CART", payload: { _id, url, name, author, category, price, inStock, fastDelivery, quantity: 1 } })
+                toast.success("Added to Cart")
             }
         } catch (error) {
+            toast.error("Failed to Add to Cart");
             console.log(error)
         }
     }
@@ -32,8 +35,10 @@ export default function ProductCard(props) {
             }) 
             if(response.data.success) {
                 dispatch({ type: "ADD_TO_WISHLIST", payload: { _id, url, name, author, category, price, inStock, fastDelivery }})
+                toast.success("Added to Wishlist");
             }
         } catch (error) {
+            toast.error("Failed to Add to Wishlist")
             console.log("error occured",error)
         }
     }

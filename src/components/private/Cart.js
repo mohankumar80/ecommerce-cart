@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { toast } from 'react-toastify';
 import cart_empty from "../../assests/cart_empty.png";
 import useAuth from '../../context/auth-context/useAuth';
 import { useCart } from "../../context/cart-context/cart-context"
@@ -26,8 +27,10 @@ export default function Cart() {
             })
             if(response.data.success) {
                 dispatch({ type: "REMOVE_FROM_CART", payload: cartItem })
+                toast.success("Removed from Cart");
             }
         } catch (error) {
+            toast.error("Failed to remove from Cart")
             console.log("failed to remove from cart", error)
         }
     }
@@ -38,8 +41,11 @@ export default function Cart() {
                 "userId": userId
             })
             if(response.data.success) {
-                dispatch({ type: "INCREMENT_ITEMS", payload: cartItem })            }
+                dispatch({ type: "INCREMENT_ITEMS", payload: cartItem })
+                toast.success("Item has been incremented")
+            }
         } catch (error) {
+            toast.error("Failed to increase the item")
             console.log("failed to increase the product quantity from cart", error)
         }
     }
@@ -51,8 +57,10 @@ export default function Cart() {
             })
             if(response.data.success) {
                 dispatch({ type: "DECREMENT_ITEMS", payload: cartItem })
+                toast.success("Item has been decremented")
             }
         } catch (error) {
+            toast.error("Failed to remove the item")
             console.log("failed to decrease the product quantity from cart", error)
         }
     }

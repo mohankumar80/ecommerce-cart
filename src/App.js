@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Navigation, Home, ProductListing, Notfound, Login, Signup } from "./components/index";
 import { Cart, WishList } from "./components/private/index";
@@ -64,6 +66,7 @@ export default function App() {
   return (
     <div className="App">
       <Navigation />
+      <ToastContainer />
       <Routes>
         <Route path="*" element={<Notfound/>} />
           <Route path="/" element={<Home />} />

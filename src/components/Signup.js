@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import { toast } from 'react-toastify';
 
 export default function Signup() {
 
@@ -32,10 +33,12 @@ export default function Signup() {
                     "password": password
             })
             if(response.data.success) {
+                toast.success("SignUp successfull !! Please Login")
                 navigate("/login", { state: { from: state?.from } })
             }
         } catch (error) {
             console.log("something went while signing up", error)
+            toast.error("Something went wrong!! Please try again")
         }
     }
 
